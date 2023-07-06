@@ -1,0 +1,44 @@
+<template>
+    <div class="wrapper">
+        <section class="content">
+            <div class="columns">
+            <main class="main" >
+                <div class="container">
+                    <template for:each={buses} for:item="bus">
+                        <c-tile 
+                        key={bus.Id} 
+                        product={bus} 
+                        ontileclick={handleBusClick}>
+                        </c-tile>
+                    </template>
+                </div>            
+            </main>
+            <aside class="sidebar-second">
+                <template if:true={selectedBus}>
+                    <div class="slds-p-around_xx-small">
+                    <lightning-card title="Bus Details" variant="base">
+                        <lightning-record-edit-form object-api-name="Bus__c" record-id={selectedBus.Id} onsuccess={handleSuccess}>
+                            <lightning-messages></lightning-messages>
+                            <div class="slds-m-around_small">
+                            <lightning-input-field field-name="Year__c"></lightning-input-field>
+                            <lightning-input-field field-name="Maximum_Capacity__c"></lightning-input-field>
+                            <lightning-input-field field-name="Odometer_Reading__c"></lightning-input-field>
+                            <lightning-button class="slds-m-around_small" variant="brand" type="submit" label="Save">
+                            </lightning-button>
+                            <lightning-button class="slds-m-around_small" variant="brand" label="Cancel" onclick={handleReset}>
+                            </lightning-button>
+                            </div>
+                        </lightning-record-edit-form>
+                    </lightning-card>
+                </div>
+                    <div class="slds-p-around_xx-small">
+                    <lightning-card variant="base">
+                        <div class="slds-m-around_small">Resale Value: {resaleValue}</div>
+                    </lightning-card>
+                    </div>
+                </template>
+            </aside>
+            </div>
+        </section>
+        </div>
+</template>
