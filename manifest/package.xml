@@ -33,6 +33,10 @@
         <members>fleetManagement</members>
         <name>LightningComponentBundle</name>
     </types>
+    <types>
+        <members>tile</members>
+        <name>LightningComponentBundle</name>
+    </types>
     
     <version>57.0</version>
 </Package>
